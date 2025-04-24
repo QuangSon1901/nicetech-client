@@ -1,46 +1,44 @@
 
 import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Mail } from 'lucide-react';
 
 const footerLinks = [
   {
-    title: "Products",
+    title: "Website",
     links: [
-      { name: "Website Builder", href: "#" },
-      { name: "Online Stores", href: "#" },
-      { name: "Domain Names", href: "#" },
-      { name: "Marketing Tools", href: "#" },
-      { name: "Analytics", href: "#" },
+      { name: "Website", href: "#" },
+      { name: "Khám phá mẫu", href: "#" },
+      { name: "Portfolios", href: "#" },
+      { name: "Blogs", href: "#" },
+      { name: "Doanh nghiệp", href: "#" },
     ]
   },
   {
-    title: "Company",
+    title: "Commerce",
     links: [
-      { name: "About", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Press", href: "#" },
-      { name: "Investors", href: "#" },
-      { name: "Partners", href: "#" },
+      { name: "Ecommerce", href: "#" },
+      { name: "Khám phá mẫu", href: "#" },
+      { name: "Bán hàng online", href: "#" },
+      { name: "Ngành dịch vụ", href: "#" },
     ]
   },
   {
-    title: "Support",
+    title: "Hạn tầng Hosting, VPS",
     links: [
-      { name: "Help Center", href: "#" },
-      { name: "Contact Us", href: "#" },
-      { name: "Community", href: "#" },
-      { name: "Developer Platform", href: "#" },
-      { name: "Status", href: "#" },
+      { name: "Tên miền", href: "#" },
+      { name: "Hosting", href: "#" },
+      { name: "VPS", href: "#" },
+      { name: "Email doanh nghiệp", href: "#" },
+      { name: "Dịch vụ sao lưu dữ liệu", href: "#" },
     ]
   },
   {
-    title: "Resources",
+    title: "Về chúng tôi",
     links: [
+      { name: "Giới thiệu", href: "#" },
+      { name: "Dự án", href: "#" },
       { name: "Blog", href: "#" },
-      { name: "Guides", href: "#" },
-      { name: "Templates", href: "#" },
-      { name: "Webinars", href: "#" },
-      { name: "Podcasts", href: "#" },
+      { name: "Liên hệ", href: "#" }
     ]
   }
 ];
@@ -52,25 +50,22 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <a href="/" className="text-2xl font-bold mb-6 inline-block">
-              <span className="flex items-center">
-                <div className="h-8 w-8 rounded-full bg-black mr-2"></div>
-                <span>Squarespace</span>
-              </span>
+              <img className='h-8' src="/uploads/logos/header-logo.png" alt="NiceTech" />
             </a>
             <p className="text-gray-600 mb-6">
               Build a website, sell online, and engage with your audience.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-600 hover:text-black">
+              <a href="https://www.facebook.com/nicetechvietnam" className="text-gray-600 hover:text-black">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-600 hover:text-black">
-                <Twitter size={20} />
+              <a href="nicetechvn@gmail.com" className="text-gray-600 hover:text-black">
+                <Mail size={20} />
               </a>
-              <a href="#" className="text-gray-600 hover:text-black">
-                <Instagram size={20} />
+              <a href="https://zalo.me/0394062185" className="text-gray-600 hover:text-black">
+                Zalo
               </a>
-              <a href="#" className="text-gray-600 hover:text-black">
+              <a href="https://www.youtube.com/@nicetechvn" className="text-gray-600 hover:text-black">
                 <Youtube size={20} />
               </a>
             </div>
@@ -94,12 +89,12 @@ const Footer = () => {
         
         <div className="border-t border-gray-200 mt-16 pt-8 flex flex-col md:flex-row justify-between">
           <div className="text-gray-500 mb-4 md:mb-0">
-            © 2023 Squarespace Clone. All rights reserved.
+            © 2024 NiceTech. All rights reserved.
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-500 hover:text-gray-800">Terms of Service</a>
-            <a href="#" className="text-gray-500 hover:text-gray-800">Privacy Policy</a>
-            <a href="#" className="text-gray-500 hover:text-gray-800">Accessibility</a>
+            <a href="#" className="text-gray-500 hover:text-gray-800">Điều khoản sử dụng</a>
+            <a href="#" className="text-gray-500 hover:text-gray-800">Chính sách bảo mật</a>
+            <a href="#" className="text-gray-500 hover:text-gray-800">Sitemap</a>
           </div>
         </div>
       </div>
