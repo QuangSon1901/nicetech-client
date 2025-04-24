@@ -14,6 +14,7 @@ import ServiceBlogs from "./pages/services/Blogs";
 import ServiceBusinessWebsite from "./pages/services/BusinessWebsite";
 import ServiceECommerce from "./pages/services/ECommerce";
 import ServiceOnlineStore from "./pages/services/OnlineStore";
+import ServiceIndustryWebsite  from "./pages/services/ServiceIndustryWebsite";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/dich-vu/doanh-nghiep" element={<ServiceBusinessWebsite />} />
             <Route path="/dich-vu/ecommerce" element={<ServiceECommerce />} />
             <Route path="/dich-vu/ban-hang-online" element={<ServiceOnlineStore />} />
+            <Route path="/dich-vu/nganh-dich-vu" element={<ServiceIndustryWebsite />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

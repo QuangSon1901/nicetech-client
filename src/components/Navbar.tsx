@@ -2,37 +2,72 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-// Sử dụng cấu trúc giống footer
+// Updated service links with images and descriptions
 const serviceLinks = [
   {
     title: "Website",
     links: [
-      { name: "Website", href: "/dich-vu/website" },
-      { name: "Khám phá mẫu", href: "/dich-vu/kham-pha-mau" },
-      { name: "Portfolios", href: "/dich-vu/portfolios" },
-      { name: "Blogs", href: "/dich-vu/blogs" },
-      { name: "Doanh nghiệp", href: "/dich-vu/doanh-nghiep" },
+      { 
+        name: "Website", 
+        href: "/dich-vu/website", 
+        image: "/uploads/services/website.jpg",
+        description: "Thiết kế website chuyên nghiệp, tối ưu trải nghiệm người dùng" 
+      },
+      { 
+        name: "Khám phá mẫu", 
+        href: "/dich-vu/kham-pha-mau", 
+        image: "/uploads/services/templates.jpg",
+        description: "Bộ sưu tập mẫu website đa dạng cho nhiều lĩnh vực" 
+      },
+      { 
+        name: "Portfolios", 
+        href: "/dich-vu/portfolios", 
+        image: "/uploads/services/portfolio.jpg",
+        description: "Thiết kế portfolio độc đáo, thu hút cho cá nhân và doanh nghiệp" 
+      },
+      { 
+        name: "Blogs", 
+        href: "/dich-vu/blogs", 
+        image: "/uploads/services/blog.jpg",
+        description: "Nền tảng blog chuyên nghiệp, tối ưu SEO và tương tác" 
+      },
+      { 
+        name: "Doanh nghiệp", 
+        href: "/dich-vu/doanh-nghiep", 
+        image: "/uploads/services/business.jpg",
+        description: "Giải pháp website toàn diện cho doanh nghiệp mọi quy mô" 
+      },
     ]
   },
   {
     title: "Commerce",
     links: [
-      { name: "Ecommerce", href: "/dich-vu/ecommerce" },
-      { name: "Khám phá mẫu", href: "/dich-vu/kham-pha-mau" },
-      { name: "Bán hàng online", href: "/dich-vu/ban-hang-online" },
-      { name: "Ngành dịch vụ", href: "/dich-vu/nganh-dich-vu" },
+      { 
+        name: "Ecommerce", 
+        href: "/dich-vu/ecommerce", 
+        image: "/uploads/services/ecommerce.jpg",
+        description: "Nền tảng thương mại điện tử toàn diện, dễ quản lý" 
+      },
+      { 
+        name: "Khám phá mẫu", 
+        href: "/dich-vu/kham-pha-mau", 
+        image: "/uploads/services/shop-templates.jpg",
+        description: "Bộ sưu tập mẫu website bán hàng đa ngành nghề" 
+      },
+      { 
+        name: "Bán hàng online", 
+        href: "/dich-vu/ban-hang-online", 
+        image: "/uploads/services/online-shop.jpg",
+        description: "Giải pháp bán hàng trực tuyến linh hoạt, hiệu quả" 
+      },
+      { 
+        name: "Ngành dịch vụ", 
+        href: "/dich-vu/nganh-dich-vu", 
+        image: "/uploads/services/services.jpg",
+        description: "Website chuyên biệt cho các doanh nghiệp dịch vụ" 
+      },
     ]
   },
-  {
-    title: "Hạ tầng Hosting, VPS",
-    links: [
-      { name: "Tên miền", href: "#" },
-      { name: "Hosting", href: "#" },
-      { name: "VPS", href: "#" },
-      { name: "Email doanh nghiệp", href: "#" },
-      { name: "Dịch vụ sao lưu dữ liệu", href: "#" },
-    ]
-  }
 ];
 
 const Navbar = () => {
@@ -79,31 +114,6 @@ const Navbar = () => {
               >
                 Dịch vụ <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`}/>
               </button>
-              
-              {servicesDropdownOpen && (
-                <div 
-                  className="absolute transform -translate-x-1/4 mt-5 w-[700px] bg-white border border-gray-100 shadow-lg rounded-sm z-50 py-8 animate-fade-up-short"
-                  onMouseLeave={() => setServicesDropdownOpen(false)}
-                  ref={dropdownRef}
-                >
-                  <div className="grid grid-cols-3 gap-6 px-8">
-                    {serviceLinks.map((group, index) => (
-                      <div key={index}>
-                        <h4 className="font-bold text-sm uppercase text-gray-500 mb-4">{group.title}</h4>
-                        <ul className="space-y-3">
-                          {group.links.map((link, i) => (
-                            <li key={i}>
-                              <a href={link.href} className="text-gray-800 hover:text-black flex justify-between items-center">
-                                {link.name} 
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
             
             <a href="#du-an" className="text-gray-800 hover:text-black font-medium">Dự án</a>
@@ -122,6 +132,46 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Services Mega Dropdown - Centered */}
+      {servicesDropdownOpen && (
+        <div 
+          className="absolute left-0 right-0 w-full z-50 bg-white border-b border-gray-100 shadow-lg animate-fade-in"
+          onMouseLeave={() => setServicesDropdownOpen(false)}
+          ref={dropdownRef}
+        >
+          <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
+            <div className="grid grid-cols-2 gap-8">
+              {serviceLinks.map((group, index) => (
+                <div key={index}>
+                  <h4 className="font-bold text-sm uppercase text-gray-500 mb-4">{group.title}</h4>
+                  <div className="grid grid-cols-2 gap-6">
+                    {group.links.map((link, i) => (
+                      <a 
+                        href={link.href} 
+                        key={i} 
+                        className="flex group hover:bg-gray-50 p-3 rounded-sm transition-colors"
+                      >
+                        <div className="w-16 h-16 mr-4 bg-gray-100 overflow-hidden rounded-sm flex-shrink-0">
+                          <img 
+                            src={link.image} 
+                            alt={link.name} 
+                            className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                          />
+                        </div>
+                        <div>
+                          <h5 className="font-medium text-gray-800 group-hover:text-black">{link.name}</h5>
+                          <p className="text-sm text-gray-600 mt-1 line-clamp-2">{link.description}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white absolute w-full border-b border-gray-100">
@@ -131,14 +181,14 @@ const Navbar = () => {
             {/* Mobile service dropdown */}
             <div className="py-2">
               <button 
-                onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="flex items-center justify-between w-full text-gray-800 hover:text-black font-medium"
               >
                 <span>Dịch vụ</span>
-                <ChevronDown className={`h-4 w-4 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`}/>
+                <ChevronDown className={`h-4 w-4 transition-transform ${mobileMenuOpen ? 'rotate-180' : ''}`}/>
               </button>
               
-              {servicesDropdownOpen && (
+              {mobileMenuOpen && (
                 <div className="mt-2 pl-4 space-y-6 animate-fade-in">
                   {serviceLinks.map((group, index) => (
                     <div key={index} className="mt-2">
