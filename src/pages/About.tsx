@@ -53,9 +53,9 @@ const About = () => {
                     <img 
                       src="/uploads/aboutus.jpg" 
                       alt="NiceTech team" 
-                      className="w-full h-auto rounded-lg shadow-xl"
+                      className="w-full h-auto rounded-sm shadow-xl"
                     />
-                    <div className="absolute -bottom-6 -left-6 bg-black text-white p-4 rounded-lg shadow-lg">
+                    <div className="absolute -bottom-6 -left-6 bg-black text-white p-4 rounded-sm shadow-lg">
                       <p className="text-3xl font-bold">5+</p>
                       <p className="text-sm">Năm kinh nghiệm</p>
                     </div>
@@ -76,7 +76,7 @@ const About = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div className="bg-white p-8 rounded-lg shadow-md hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-md hover-scale fade-in">
                   <h3 className="text-2xl font-bold mb-4">Sứ mệnh</h3>
                   <p className="text-gray-600 mb-6">
                     Đem đến cho khách hàng những giải pháp số toàn diện, giúp doanh nghiệp phát triển mạnh mẽ trong thời đại công nghệ số. Chúng tôi cam kết xây dựng sản phẩm chất lượng cao, tối ưu hiệu suất và thân thiện với người dùng.
@@ -97,7 +97,7 @@ const About = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-white p-8 rounded-lg shadow-md hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-md hover-scale fade-in">
                   <h3 className="text-2xl font-bold mb-4">Tầm nhìn</h3>
                   <p className="text-gray-600 mb-6">
                     Trở thành đơn vị hàng đầu trong lĩnh vực thiết kế website và cung cấp giải pháp số tại Việt Nam. Chúng tôi không ngừng đổi mới, áp dụng công nghệ tiên tiến để mang lại giá trị tốt nhất cho khách hàng.
@@ -132,7 +132,7 @@ const About = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-gray-50 p-8 rounded-lg hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Award size={32} />
                   </div>
@@ -142,7 +142,7 @@ const About = () => {
                   </p>
                 </div>
 
-                <div className="bg-gray-50 p-8 rounded-lg hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Users size={32} />
                   </div>
@@ -152,7 +152,7 @@ const About = () => {
                   </p>
                 </div>
 
-                <div className="bg-gray-50 p-8 rounded-lg hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Clock size={32} />
                   </div>

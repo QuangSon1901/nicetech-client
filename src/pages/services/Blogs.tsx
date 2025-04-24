@@ -131,7 +131,7 @@ const Blogs = () => {
                   <img
                     src="/uploads/blogs/blog-hero.jpg"
                     alt="Blog chuyên nghiệp"
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
               </div>
@@ -159,7 +159,7 @@ const Blogs = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover-scale fade-in">
+                <div className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
                   <div className="h-64 overflow-hidden">
                     <img
                       src="/uploads/blogs/template1.jpg"
@@ -182,7 +182,7 @@ const Blogs = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover-scale fade-in">
+                <div className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
                   <div className="h-64 overflow-hidden">
                     <img
                       src="/uploads/blogs/template2.jpg"
@@ -205,7 +205,7 @@ const Blogs = () => {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover-scale fade-in">
+                <div className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
                   <div className="h-64 overflow-hidden">
                     <img
                       src="/uploads/blogs/template3.jpg"
@@ -247,8 +247,8 @@ const Blogs = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                 <div className="md:col-span-3 fade-in">
-                  <div className="bg-gray-50 p-6 rounded-xl shadow-lg">
-                    <div className="aspect-video bg-white rounded-lg overflow-hidden mb-6">
+                  <div className="bg-gray-50 p-6 rounded-sm shadow-lg">
+                    <div className="aspect-video bg-white rounded-sm overflow-hidden mb-6">
                       <img
                         src={
                           blogLayouts.find(
@@ -260,7 +260,7 @@ const Blogs = () => {
                       />
                     </div>
 
-                    <div className="bg-white p-5 rounded-lg">
+                    <div className="bg-white p-5 rounded-sm">
                       <h3 className="text-2xl font-bold mb-3">Morning Tea</h3>
                       <p className="text-gray-600 mb-6">
                         Lorem ipsum dolor sit amet consectetur adipiscing elit,
@@ -281,13 +281,13 @@ const Blogs = () => {
                 </div>
 
                 <div className="md:col-span-2 fade-in">
-                  <div className="bg-gray-50 p-6 rounded-xl h-full flex flex-col justify-center">
+                  <div className="bg-gray-50 p-6 rounded-sm h-full flex flex-col justify-center">
                     <h3 className="text-xl font-bold mb-6">Bố cục</h3>
                     <div className="space-y-4">
                       {blogLayouts.map((layout) => (
                         <button
                           key={layout.id}
-                          className={`w-full text-left py-3 px-4 rounded-lg flex items-center justify-between transition-colors ${
+                          className={`w-full text-left py-3 px-4 rounded-sm flex items-center justify-between transition-colors ${
                             activeLayout === layout.id
                               ? "bg-black text-white"
                               : "bg-white hover:bg-gray-100"
@@ -330,7 +330,7 @@ const Blogs = () => {
                     ý tưởng để bạn đúc kết thành bài đăng hoàn hảo.
                   </p>
 
-                  <div className="bg-white p-6 rounded-xl shadow-md mb-8">
+                  <div className="bg-white p-6 rounded-sm shadow-md mb-8">
                     <h3 className="text-lg font-bold mb-4">
                       Mẫu bài viết do AI tạo
                     </h3>
@@ -355,7 +355,7 @@ const Blogs = () => {
                   <img
                     src="/uploads/blogs/ai-content.jpg"
                     alt="NiceTech AI Content Generation"
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
               </div>
@@ -431,7 +431,7 @@ const Blogs = () => {
                   <img
                     src="/uploads/blogs/premium-content.jpg"
                     alt="Premium content"
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
               </div>
@@ -452,7 +452,7 @@ const Blogs = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <BarChart2 size={24} />
                   </div>
@@ -463,7 +463,7 @@ const Blogs = () => {
                   </p>
                 </div>
 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Users size={24} />
                   </div>
@@ -477,7 +477,7 @@ const Blogs = () => {
                   </p>
                 </div>
 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Tag size={24} />
                   </div>
@@ -529,7 +529,7 @@ const Blogs = () => {
                             </div>
                           </div>
                           <div className="fade-in">
-                            <div className="rounded-xl overflow-hidden shadow-xl">
+                            <div className="rounded-sm overflow-hidden shadow-xl">
                               <img
                                 src={testimonial.image}
                                 alt={testimonial.author}
@@ -595,7 +595,7 @@ const Blogs = () => {
                   <img
                     src="/uploads/blogs/seo-tools.jpg"
                     alt="SEO Tools"
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
 

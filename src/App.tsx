@@ -4,6 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
+
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
@@ -14,11 +17,21 @@ import ServiceBlogs from "./pages/services/Blogs";
 import ServiceBusinessWebsite from "./pages/services/BusinessWebsite";
 import ServiceECommerce from "./pages/services/ECommerce";
 import ServiceOnlineStore from "./pages/services/OnlineStore";
-import ServiceIndustryWebsite  from "./pages/services/ServiceIndustryWebsite";
+import ServiceIndustryWebsite from "./pages/services/ServiceIndustryWebsite";
+import Projects from "./pages/Projects";
+import Clients from "./pages/Clients";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = () => {
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
+  
+  return (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -36,12 +49,17 @@ const App = () => (
             <Route path="/dich-vu/ecommerce" element={<ServiceECommerce />} />
             <Route path="/dich-vu/ban-hang-online" element={<ServiceOnlineStore />} />
             <Route path="/dich-vu/nganh-dich-vu" element={<ServiceIndustryWebsite />} />
+            <Route path="/du-an" element={<Projects />} />
+            <Route path="/khach-hang" element={<Clients />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/lien-he" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
-);
+)};
 
 export default App;

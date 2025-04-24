@@ -22,23 +22,24 @@ const footerLinks = [
       { name: "Ngành dịch vụ", href: "#" },
     ]
   },
-  {
-    title: "Hạn tầng Hosting, VPS",
-    links: [
-      { name: "Tên miền", href: "#" },
-      { name: "Hosting", href: "#" },
-      { name: "VPS", href: "#" },
-      { name: "Email doanh nghiệp", href: "#" },
-      { name: "Dịch vụ sao lưu dữ liệu", href: "#" },
-    ]
-  },
+  // {
+  //   title: "Hạ tầng Hosting, VPS",
+  //   links: [
+  //     { name: "Tên miền", href: "#" },
+  //     { name: "Hosting", href: "#" },
+  //     { name: "VPS", href: "#" },
+  //     { name: "Email doanh nghiệp", href: "#" },
+  //     { name: "Dịch vụ sao lưu dữ liệu", href: "#" },
+  //   ]
+  // },
   {
     title: "Về chúng tôi",
     links: [
-      { name: "Giới thiệu", href: "#" },
-      { name: "Dự án", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Liên hệ", href: "#" }
+      { name: "Giới thiệu", href: "/gioi-thieu" },
+      { name: "Dự án", href: "/du-an" },
+      { name: "Khách hàng", href: "/khach-hang" },
+      { name: "Blog", href: "/blog" },
+      { name: "Liên hệ", href: "/lien-he" }
     ]
   }
 ];

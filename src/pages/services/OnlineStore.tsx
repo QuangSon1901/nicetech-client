@@ -86,7 +86,7 @@ const OnlineStore = () => {
                 {projectExamples.map((project, index) => (
                   <div 
                     key={index} 
-                    className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover-scale fade-in"
+                    className="bg-white rounded-sm overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover-scale fade-in"
                   >
                     <div className="h-64 overflow-hidden">
                       <img 
@@ -133,13 +133,13 @@ const OnlineStore = () => {
                     <img 
                       src="/uploads/onlinestore/product-showcase.jpg" 
                       alt="Product Showcase" 
-                      className="w-full h-auto rounded-xl shadow-xl"
+                      className="w-full h-auto rounded-sm shadow-xl"
                     />
-                    <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg max-w-xs">
+                    <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-sm shadow-lg max-w-xs">
                       <img 
                         src="/uploads/onlinestore/product-variant.jpg" 
                         alt="Product Variants" 
-                        className="w-full h-auto rounded-lg"
+                        className="w-full h-auto rounded-sm"
                       />
                     </div>
                   </div>
@@ -162,7 +162,7 @@ const OnlineStore = () => {
                       <img 
                         src="/uploads/onlinestore/mobile-shopping.jpg" 
                         alt="Mobile Shopping" 
-                        className="w-full h-auto rounded-lg shadow-md"
+                        className="w-full h-auto rounded-sm shadow-md"
                       />
                     </div>
                   </div>
@@ -176,7 +176,7 @@ const OnlineStore = () => {
                     <p className="text-gray-600">
                       Xây dựng niềm tin với người mua thông qua hệ thống đánh giá sản phẩm minh bạch và chuyên nghiệp, với xác thực người mua thực.
                     </p>
-                    <div className="mt-4 bg-white p-4 rounded-lg shadow-sm">
+                    <div className="mt-4 bg-white p-4 rounded-sm shadow-sm">
                       <div className="flex mb-2">
                         {[1, 2, 3, 4, 5].map((star) => (
                           <Star 
@@ -205,7 +205,7 @@ const OnlineStore = () => {
                     <img 
                       src="/uploads/onlinestore/inventory-dashboard.jpg" 
                       alt="Inventory Dashboard" 
-                      className="w-full h-auto rounded-xl shadow-xl"
+                      className="w-full h-auto rounded-sm shadow-xl"
                     />
                   </div>
                 </div>
@@ -225,7 +225,7 @@ const OnlineStore = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                 <div className="grid grid-cols-1 gap-8 fade-in">
-                  <div className="bg-gray-50 p-8 rounded-xl shadow-md hover-scale">
+                  <div className="bg-gray-50 p-8 rounded-sm shadow-md hover-scale">
                     <div className="flex items-start">
                       <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shrink-0 mr-4">
                         <Truck size={24} />
@@ -241,12 +241,12 @@ const OnlineStore = () => {
                       <img 
                         src="/uploads/onlinestore/shipping-methods.jpg" 
                         alt="Shipping Methods" 
-                        className="w-full h-auto rounded-lg"
+                        className="w-full h-auto rounded-sm"
                       />
                     </div>
                   </div>
                   
-                  <div className="bg-gray-50 p-8 rounded-xl shadow-md hover-scale">
+                  <div className="bg-gray-50 p-8 rounded-sm shadow-md hover-scale">
                     <div className="flex items-start">
                       <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shrink-0 mr-4">
                         <Package size={24} />
@@ -262,7 +262,7 @@ const OnlineStore = () => {
                 </div>
                 
                 <div className="grid grid-cols-1 gap-8 fade-in">
-                  <div className="bg-gray-50 p-8 rounded-xl shadow-md hover-scale">
+                  <div className="bg-gray-50 p-8 rounded-sm shadow-md hover-scale">
                     <div className="flex items-start">
                       <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shrink-0 mr-4">
                         <CreditCard size={24} />
@@ -275,22 +275,22 @@ const OnlineStore = () => {
                       </div>
                     </div>
                     <div className="mt-6 flex flex-wrap gap-4 justify-center">
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
+                      <div className="bg-white p-3 rounded-sm shadow-sm">
                         <span className="font-bold">VNPay</span>
                       </div>
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
+                      <div className="bg-white p-3 rounded-sm shadow-sm">
                         <span className="font-bold">MoMo</span>
                       </div>
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
+                      <div className="bg-white p-3 rounded-sm shadow-sm">
                         <span className="font-bold">ZaloPay</span>
                       </div>
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
+                      <div className="bg-white p-3 rounded-sm shadow-sm">
                         <span className="font-bold">Visa/Master</span>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="bg-gray-50 p-8 rounded-xl shadow-md hover-scale">
+                  <div className="bg-gray-50 p-8 rounded-sm shadow-md hover-scale">
                     <div className="flex items-start">
                       <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shrink-0 mr-4">
                         <BarChart2 size={24} />
@@ -355,7 +355,7 @@ const OnlineStore = () => {
                   <img 
                     src="/uploads/onlinestore/custom-features.jpg" 
                     alt="Custom Features" 
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
               </div>
@@ -414,7 +414,7 @@ const OnlineStore = () => {
                 </div>
                 
                 <div className="fade-in">
-                  <div className="bg-gray-50 p-8 rounded-xl shadow-lg">
+                  <div className="bg-gray-50 p-8 rounded-sm shadow-lg">
                     <h3 className="text-2xl font-bold mb-6">Tích hợp marketing & bán hàng</h3>
                     <p className="text-gray-600 mb-8">
                       Kết nối với các công cụ và nền tảng marketing hàng đầu để tăng trưởng doanh số.
@@ -425,7 +425,7 @@ const OnlineStore = () => {
                         "Google Analytics", "Facebook Shop", "TikTok Shop", 
                         "MailChimp", "Lazada", "Shopee", "Sendo", "Tiki"
                       ].map((integration, index) => (
-                        <div key={index} className="bg-white p-3 rounded-lg shadow-sm hover-scale text-center">
+                        <div key={index} className="bg-white p-3 rounded-sm shadow-sm hover-scale text-center">
                           <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
                             <span className="font-bold text-sm">{integration.substring(0, 2)}</span>
                           </div>
@@ -552,7 +552,7 @@ const OnlineStore = () => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Gift size={24} />
                   </div>
@@ -565,7 +565,7 @@ const OnlineStore = () => {
                   </a>
                 </div>
                 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Clock size={24} />
                   </div>
@@ -578,7 +578,7 @@ const OnlineStore = () => {
                   </a>
                 </div>
                 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <ShoppingCart size={24} />
                   </div>
@@ -605,7 +605,7 @@ const OnlineStore = () => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <h3 className="text-2xl font-bold mb-2">Cơ bản</h3>
                   <p className="text-gray-600 mb-6">Cho doanh nghiệp nhỏ và vừa</p>
                   <div className="text-4xl font-bold mb-6">20-30 triệu</div>
@@ -646,7 +646,7 @@ const OnlineStore = () => {
                   </button>
                 </div>
                 
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg hover-scale fade-in relative border-2 border-black transform scale-105 z-10">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg hover-scale fade-in relative border-2 border-black transform scale-105 z-10">
                   <div className="absolute -top-4 right-8 bg-black text-white px-4 py-1 text-sm">
                     Phổ biến nhất
                   </div>
@@ -696,7 +696,7 @@ const OnlineStore = () => {
                   </button>
                 </div>
                 
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <h3 className="text-2xl font-bold mb-2">Cao cấp</h3>
                   <p className="text-gray-600 mb-6">Cho doanh nghiệp lớn</p>
                   <div className="text-4xl font-bold mb-6">70-100+ triệu</div>
@@ -755,7 +755,7 @@ const OnlineStore = () => {
               
               <div className="space-y-6 max-w-4xl mx-auto">
                 {faqs.map((faq, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden fade-in">
+                  <div key={index} className="bg-white rounded-sm shadow-md overflow-hidden fade-in">
                     <button 
                       className="w-full text-left p-6 font-bold text-lg flex justify-between items-center"
                       onClick={() => setActiveTab(activeTab === index ? -1 : index)}
@@ -777,7 +777,7 @@ const OnlineStore = () => {
           <section className="bg-gray-50 py-20">
             <div className="section-container">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div className="bg-white p-8 rounded-xl shadow-lg fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg fade-in">
                   <h3 className="text-2xl font-bold mb-4">Hỗ trợ 24/7</h3>
                   <p className="text-gray-600 mb-6">
                     Đội ngũ hỗ trợ kỹ thuật chuyên nghiệp sẵn sàng giải quyết mọi vấn đề về website bán hàng của bạn.
@@ -787,7 +787,7 @@ const OnlineStore = () => {
                   </a>
                 </div>
                 
-                <div className="bg-white p-8 rounded-xl shadow-lg fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg fade-in">
                   <h3 className="text-2xl font-bold mb-4">Bảo trì & Nâng cấp</h3>
                   <p className="text-gray-600 mb-6">
                     Dịch vụ bảo trì và nâng cấp website liên tục, đảm bảo hệ thống luôn hoạt động tốt nhất và cập nhật với xu hướng mới.
@@ -822,7 +822,7 @@ const OnlineStore = () => {
                 <img 
                   src="/uploads/onlinestore/store-showcase.jpg" 
                   alt="Website Bán Hàng Chuyên Nghiệp" 
-                  className="w-full max-w-4xl h-auto mx-auto rounded-xl shadow-2xl"
+                  className="w-full max-w-4xl h-auto mx-auto rounded-sm shadow-2xl"
                 />
               </div>
             </div>

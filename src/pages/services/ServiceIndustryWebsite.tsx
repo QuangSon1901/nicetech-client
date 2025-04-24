@@ -186,7 +186,7 @@ const ServiceIndustryWebsite = () => {
                 {projectExamples.map((project, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover-scale fade-in"
+                    className="bg-white rounded-sm overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover-scale fade-in"
                   >
                     <div className="h-64 overflow-hidden">
                       <img
@@ -240,7 +240,7 @@ const ServiceIndustryWebsite = () => {
                 {industryTypes.map((industry, index) => (
                   <div
                     key={index}
-                    className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in"
+                    className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in"
                   >
                     <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                       {industry.icon}
@@ -339,13 +339,13 @@ const ServiceIndustryWebsite = () => {
                     <img
                       src="/uploads/services/booking-system.jpg"
                       alt="Hệ thống đặt lịch"
-                      className="w-full h-auto rounded-xl shadow-xl"
+                      className="w-full h-auto rounded-sm shadow-xl"
                     />
-                    <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg max-w-xs">
+                    <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-sm shadow-lg max-w-xs">
                       <img
                         src="/uploads/services/booking-mobile.jpg"
                         alt="Đặt lịch trên di động"
-                        className="w-full h-auto rounded-lg"
+                        className="w-full h-auto rounded-sm"
                       />
                     </div>
                   </div>
@@ -369,7 +369,7 @@ const ServiceIndustryWebsite = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Calendar size={24} />
                   </div>
@@ -405,7 +405,7 @@ const ServiceIndustryWebsite = () => {
                   </ul>
                 </div>
 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Star size={24} />
                   </div>
@@ -438,7 +438,7 @@ const ServiceIndustryWebsite = () => {
                   </ul>
                 </div>
 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <MapPin size={24} />
                   </div>
@@ -471,7 +471,7 @@ const ServiceIndustryWebsite = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Image size={24} />
                   </div>
@@ -504,7 +504,7 @@ const ServiceIndustryWebsite = () => {
                   </ul>
                 </div>
 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Layout size={24} />
                   </div>
@@ -535,7 +535,7 @@ const ServiceIndustryWebsite = () => {
                   </ul>
                 </div>
 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <MessageSquare size={24} />
                   </div>
@@ -579,7 +579,7 @@ const ServiceIndustryWebsite = () => {
                   <img
                     src="/uploads/services/technology-stack.jpg"
                     alt="Công nghệ hiện đại"
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
 
@@ -649,7 +649,7 @@ const ServiceIndustryWebsite = () => {
           {/* Testimonial */}
           <section className="bg-gray-50 py-20">
             <div className="section-container">
-              <div className="bg-white p-8 md:p-12 rounded-xl shadow-lg fade-in">
+              <div className="bg-white p-8 md:p-12 rounded-sm shadow-lg fade-in">
                 <div className="flex flex-col md:flex-row items-center">
                   <div className="md:w-3/4 mb-6 md:mb-0 md:pr-8">
                     <div className="flex mb-4">
@@ -680,7 +680,7 @@ const ServiceIndustryWebsite = () => {
                     <img
                       src="/uploads/services/testimonial.jpg"
                       alt="Testimonial"
-                      className="w-full h-auto rounded-lg shadow-md"
+                      className="w-full h-auto rounded-sm shadow-md"
                     />
                   </div>
                 </div>
@@ -702,7 +702,7 @@ const ServiceIndustryWebsite = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <h3 className="text-2xl font-bold mb-2">Cơ bản</h3>
                   <p className="text-gray-600 mb-6">Cho doanh nghiệp nhỏ</p>
                   <div className="text-4xl font-bold mb-6">25-35 triệu</div>
@@ -743,7 +743,7 @@ const ServiceIndustryWebsite = () => {
                   </button>
                 </div>
 
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg hover-scale fade-in relative border-2 border-black transform scale-105 z-10">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg hover-scale fade-in relative border-2 border-black transform scale-105 z-10">
                   <div className="absolute -top-4 right-8 bg-black text-white px-4 py-1 text-sm">
                     Phổ biến nhất
                   </div>
@@ -799,7 +799,7 @@ const ServiceIndustryWebsite = () => {
                   </button>
                 </div>
 
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <h3 className="text-2xl font-bold mb-2">Doanh nghiệp</h3>
                   <p className="text-gray-600 mb-6">Cho doanh nghiệp lớn</p>
                   <div className="text-4xl font-bold mb-6">60-80 triệu</div>
@@ -969,7 +969,7 @@ const ServiceIndustryWebsite = () => {
                 {faqs.map((faq, index) => (
                   <div
                     key={index}
-                    className="bg-gray-50 rounded-xl shadow-md overflow-hidden fade-in"
+                    className="bg-gray-50 rounded-sm shadow-md overflow-hidden fade-in"
                   >
                     <button
                       className="w-full text-left p-6 font-bold text-lg flex justify-between items-center"
@@ -1024,7 +1024,7 @@ const ServiceIndustryWebsite = () => {
                 <img
                   src="/uploads/services/service-showcase.jpg"
                   alt="Website Ngành Dịch Vụ"
-                  className="w-full max-w-4xl h-auto mx-auto rounded-xl shadow-2xl"
+                  className="w-full max-w-4xl h-auto mx-auto rounded-sm shadow-2xl"
                 />
               </div>
             </div>

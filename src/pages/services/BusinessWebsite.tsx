@@ -66,16 +66,16 @@ const BusinessWebsite = () => {
               <div className="text-center mb-8">
                 <p className="text-lg font-semibold">Giải pháp website doanh nghiệp được tin tưởng bởi các thương hiệu hàng đầu</p>
                 <div className="flex flex-wrap justify-center items-center gap-8 mt-8">
-                  <div className="bg-gray-100 p-4 rounded-lg w-40 h-20 flex items-center justify-center">
+                  <div className="bg-gray-100 p-4 rounded-sm w-40 h-20 flex items-center justify-center">
                     <span className="text-gray-500 font-medium">Công ty A</span>
                   </div>
-                  <div className="bg-gray-100 p-4 rounded-lg w-40 h-20 flex items-center justify-center">
+                  <div className="bg-gray-100 p-4 rounded-sm w-40 h-20 flex items-center justify-center">
                     <span className="text-gray-500 font-medium">Công ty B</span>
                   </div>
-                  <div className="bg-gray-100 p-4 rounded-lg w-40 h-20 flex items-center justify-center">
+                  <div className="bg-gray-100 p-4 rounded-sm w-40 h-20 flex items-center justify-center">
                     <span className="text-gray-500 font-medium">Công ty C</span>
                   </div>
-                  <div className="bg-gray-100 p-4 rounded-lg w-40 h-20 flex items-center justify-center">
+                  <div className="bg-gray-100 p-4 rounded-sm w-40 h-20 flex items-center justify-center">
                     <span className="text-gray-500 font-medium">Công ty D</span>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ const BusinessWebsite = () => {
                   <img 
                     src="/uploads/business/content-management.jpg" 
                     alt="Content Management Dashboard" 
-                    className="w-full h-auto rounded-xl shadow-2xl"
+                    className="w-full h-auto rounded-sm shadow-2xl"
                   />
                 </div>
               </div>
@@ -144,7 +144,7 @@ const BusinessWebsite = () => {
                   <img 
                     src="/uploads/business/performance-dashboard.jpg" 
                     alt="Performance Dashboard" 
-                    className="w-full h-auto rounded-xl shadow-2xl"
+                    className="w-full h-auto rounded-sm shadow-2xl"
                   />
                 </div>
                 
@@ -231,7 +231,7 @@ const BusinessWebsite = () => {
                   <img 
                     src="/uploads/business/seo-optimization.jpg" 
                     alt="SEO Optimization" 
-                    className="w-full h-auto rounded-xl shadow-2xl"
+                    className="w-full h-auto rounded-sm shadow-2xl"
                   />
                 </div>
               </div>
@@ -242,7 +242,7 @@ const BusinessWebsite = () => {
           <section className="bg-white py-24">
             <div className="section-container">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Users size={28} />
                   </div>
@@ -272,7 +272,7 @@ const BusinessWebsite = () => {
                   </div>
                 </div>
                 
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Lock size={28} />
                   </div>
@@ -318,7 +318,7 @@ const BusinessWebsite = () => {
           <section className="bg-gray-50 py-24">
             <div className="section-container">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <ShieldCheck size={24} />
                   </div>
@@ -331,7 +331,7 @@ const BusinessWebsite = () => {
                   </a>
                 </div>
                 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Edit size={24} />
                   </div>
@@ -341,7 +341,7 @@ const BusinessWebsite = () => {
                   </p>
                 </div>
                 
-                <div className="bg-white p-8 rounded-xl shadow-lg hover-scale fade-in">
+                <div className="bg-white p-8 rounded-sm shadow-lg hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Users size={24} />
                   </div>
@@ -364,7 +364,7 @@ const BusinessWebsite = () => {
                 </a>
               </div>
               
-              <div className="rounded-xl overflow-hidden shadow-2xl fade-in">
+              <div className="rounded-sm overflow-hidden shadow-2xl fade-in">
                 <div className="aspect-video bg-gray-100 relative">
                   <img 
                     src="/uploads/business/video-thumbnail.jpg" 
@@ -379,7 +379,7 @@ const BusinessWebsite = () => {
                 </div>
               </div>
               
-              <div className="mt-12 p-8 bg-gray-50 rounded-xl shadow-lg fade-in">
+              <div className="mt-12 p-8 bg-gray-50 rounded-sm shadow-lg fade-in">
                 <div className="flex flex-col md:flex-row items-center">
                   <div className="md:w-3/4 mb-6 md:mb-0 md:pr-8">
                     <p className="text-xl italic text-gray-700">
@@ -389,7 +389,7 @@ const BusinessWebsite = () => {
                     <p className="text-gray-600">nicemarket.vn</p>
                   </div>
                   <div className="md:w-1/4 flex justify-center">
-                    <a href="#blog" className="bg-black text-white py-3 px-6 rounded-lg flex items-center">
+                    <a href="#blog" className="bg-black text-white py-3 px-6 rounded-sm flex items-center">
                       Xem blog <ArrowRight size={16} className="ml-2" />
                     </a>
                   </div>
@@ -406,7 +406,7 @@ const BusinessWebsite = () => {
                   <img 
                     src="/uploads/business/design-features.jpg" 
                     alt="Website Design Features" 
-                    className="w-full h-auto rounded-xl shadow-2xl"
+                    className="w-full h-auto rounded-sm shadow-2xl"
                   />
                 </div>
                 
@@ -471,7 +471,7 @@ const BusinessWebsite = () => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg text-center hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg text-center hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-6">
                     <Server size={24} />
                   </div>
@@ -482,7 +482,7 @@ const BusinessWebsite = () => {
                   </p>
                 </div>
                 
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg text-center hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg text-center hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-6">
                     <ShieldCheck size={24} />
                   </div>
@@ -493,7 +493,7 @@ const BusinessWebsite = () => {
                   </p>
                 </div>
                 
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg text-center hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg text-center hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-6">
                     <Lock size={24} />
                   </div>
@@ -529,7 +529,7 @@ const BusinessWebsite = () => {
                   "Tư vấn thiết kế",
                   "Hỗ trợ kỹ thuật và đào tạo sản phẩm tận tâm"
                 ].map((feature, index) => (
-                  <div key={index} className="bg-white p-6 rounded-lg shadow-md hover-scale fade-in">
+                  <div key={index} className="bg-white p-6 rounded-sm shadow-md hover-scale fade-in">
                     <div className="flex items-center">
                       <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center mr-3 shrink-0">
                         <CheckSquare size={12} />
@@ -570,7 +570,7 @@ const BusinessWebsite = () => {
                   <img 
                     src="/uploads/business/bulk-management.jpg" 
                     alt="Bulk Website Management" 
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
               </div>
@@ -586,7 +586,7 @@ const BusinessWebsite = () => {
               
               <div className="space-y-6 max-w-4xl mx-auto">
                 {faqs.map((faq, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden fade-in">
+                  <div key={index} className="bg-white rounded-sm shadow-md overflow-hidden fade-in">
                     <button 
                       className="w-full text-left p-6 font-bold text-lg flex justify-between items-center"
                       onClick={() => setActiveTab(activeTab === index ? -1 : index)}

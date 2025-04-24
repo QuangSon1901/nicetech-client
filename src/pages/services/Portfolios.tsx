@@ -85,28 +85,28 @@ const Portfolios = () => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 fade-in">
-                  <div className="overflow-hidden rounded-lg shadow-lg">
+                  <div className="overflow-hidden rounded-sm shadow-lg">
                     <img
                       src="/uploads/portfolios/example1.jpg"
                       alt="Portfolio example"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="overflow-hidden rounded-lg shadow-lg">
+                  <div className="overflow-hidden rounded-sm shadow-lg">
                     <img
                       src="/uploads/portfolios/example2.jpg"
                       alt="Portfolio example"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="overflow-hidden rounded-lg shadow-lg">
+                  <div className="overflow-hidden rounded-sm shadow-lg">
                     <img
                       src="/uploads/portfolios/example3.jpg"
                       alt="Portfolio example"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="overflow-hidden rounded-lg shadow-lg">
+                  <div className="overflow-hidden rounded-sm shadow-lg">
                     <img
                       src="/uploads/portfolios/example4.jpg"
                       alt="Portfolio example"
@@ -142,7 +142,7 @@ const Portfolios = () => {
                 {portfolioExamples.map((example, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg hover-scale fade-in"
+                    className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in"
                   >
                     <div className="h-64 overflow-hidden">
                       <img
@@ -177,11 +177,11 @@ const Portfolios = () => {
                     riêng lẻ để giữ cho website có tổ chức và dễ điều hướng.
                   </p>
 
-                  <div className="bg-gray-100 p-6 rounded-xl mb-8">
+                  <div className="bg-gray-100 p-6 rounded-sm mb-8">
                     <h3 className="text-lg font-bold mb-4">Lựa chọn bố cục</h3>
                     <div className="flex flex-wrap gap-3">
                       <button
-                        className={`px-4 py-2 rounded-lg text-sm flex items-center ${
+                        className={`px-4 py-2 rounded-sm text-sm flex items-center ${
                           activeLayout === "grid-overlay"
                             ? "bg-black text-white"
                             : "bg-white"
@@ -191,7 +191,7 @@ const Portfolios = () => {
                         <Grid size={16} className="mr-2" /> Grid: Overlay
                       </button>
                       <button
-                        className={`px-4 py-2 rounded-lg text-sm flex items-center ${
+                        className={`px-4 py-2 rounded-sm text-sm flex items-center ${
                           activeLayout === "grid-simple"
                             ? "bg-black text-white"
                             : "bg-white"
@@ -201,7 +201,7 @@ const Portfolios = () => {
                         <LayoutGrid size={16} className="mr-2" /> Grid: Simple
                       </button>
                       <button
-                        className={`px-4 py-2 rounded-lg text-sm flex items-center ${
+                        className={`px-4 py-2 rounded-sm text-sm flex items-center ${
                           activeLayout === "hover-cursor"
                             ? "bg-black text-white"
                             : "bg-white"
@@ -212,7 +212,7 @@ const Portfolios = () => {
                         Follow Cursor
                       </button>
                       <button
-                        className={`px-4 py-2 rounded-lg text-sm flex items-center ${
+                        className={`px-4 py-2 rounded-sm text-sm flex items-center ${
                           activeLayout === "hover-bg"
                             ? "bg-black text-white"
                             : "bg-white"
@@ -235,7 +235,7 @@ const Portfolios = () => {
                 </div>
 
                 <div className="fade-in relative">
-                  <div className="bg-gray-100 p-4 rounded-xl">
+                  <div className="bg-gray-100 p-4 rounded-sm">
                     <div className="border-b border-gray-300 pb-3 mb-4 flex items-center justify-between">
                       <div className="text-sm font-medium">
                         Trang chủ (Bản nháp)
@@ -247,7 +247,7 @@ const Portfolios = () => {
                       </div>
                     </div>
 
-                    <div className="aspect-video bg-white rounded-lg overflow-hidden relative">
+                    <div className="aspect-video bg-white rounded-sm overflow-hidden relative">
                       {activeLayout === "grid-overlay" && (
                         <img
                           src="/uploads/portfolios/layout-grid-overlay.jpg"
@@ -296,7 +296,7 @@ const Portfolios = () => {
                     </div>
                   </div>
 
-                  <div className="absolute -bottom-8 -right-8 bg-white p-4 rounded-lg shadow-lg">
+                  <div className="absolute -bottom-8 -right-8 bg-white p-4 rounded-sm shadow-lg">
                     <a
                       href="#view-template"
                       className="text-black font-medium flex items-center"
@@ -326,7 +326,7 @@ const Portfolios = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div className="fade-in order-2 md:order-1">
-                  <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                  <div className="bg-white rounded-sm shadow-lg overflow-hidden">
                     <img
                       src="/uploads/portfolios/project-management.jpg"
                       alt="Portfolio project management"
@@ -402,7 +402,7 @@ const Portfolios = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Package size={24} />
                   </div>
@@ -419,7 +419,7 @@ const Portfolios = () => {
                   </a>
                 </div>
 
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Mail size={24} />
                   </div>
@@ -436,7 +436,7 @@ const Portfolios = () => {
                   </a>
                 </div>
 
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <FileText size={24} />
                   </div>
@@ -471,7 +471,7 @@ const Portfolios = () => {
                     để giới thiệu hoàn hảo tác phẩm của bạn.
                   </p>
 
-                  <div className="bg-white p-6 rounded-xl shadow-md mb-8">
+                  <div className="bg-white p-6 rounded-sm shadow-md mb-8">
                     <h3 className="text-lg font-bold mb-4">
                       Mẫu nội dung do AI tạo
                     </h3>
@@ -496,7 +496,7 @@ const Portfolios = () => {
                   <img
                     src="/uploads/services/ai-content.jpg"
                     alt="NiceTech AI Content Generation"
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
               </div>
@@ -517,7 +517,7 @@ const Portfolios = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-gray-50 p-8 rounded-xl hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <User size={24} />
                   </div>
@@ -531,7 +531,7 @@ const Portfolios = () => {
                   </p>
                 </div>
 
-                <div className="bg-gray-50 p-8 rounded-xl hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Mail size={24} />
                   </div>
@@ -545,7 +545,7 @@ const Portfolios = () => {
                   </p>
                 </div>
 
-                <div className="bg-gray-50 p-8 rounded-xl hover-scale fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Share2 size={24} />
                   </div>

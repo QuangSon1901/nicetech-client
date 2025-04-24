@@ -70,7 +70,7 @@ const Website = () => {
                 {templates.map((template, index) => (
                   <div 
                     key={index} 
-                    className={`bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl ${index === activeTemplate ? 'ring-2 ring-black' : ''}`}
+                    className={`bg-white rounded-sm overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl ${index === activeTemplate ? 'ring-2 ring-black' : ''}`}
                     onMouseEnter={() => setActiveTemplate(index)}
                   >
                     <div className="h-64 overflow-hidden">
@@ -159,7 +159,7 @@ const Website = () => {
                   <img 
                     src="/uploads/services/professional-design.jpg" 
                     alt="Dịch vụ thiết kế website chuyên nghiệp" 
-                    className="w-full h-auto rounded-xl shadow-2xl"
+                    className="w-full h-auto rounded-sm shadow-2xl"
                   />
                 </div>
               </div>
@@ -177,7 +177,7 @@ const Website = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Smartphone size={24} />
                   </div>
@@ -187,7 +187,7 @@ const Website = () => {
                   </p>
                 </div>
                 
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <FileText size={24} />
                   </div>
@@ -197,7 +197,7 @@ const Website = () => {
                   </p>
                 </div>
                 
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Play size={24} />
                   </div>
@@ -207,7 +207,7 @@ const Website = () => {
                   </p>
                 </div>
                 
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <PaintBucket size={24} />
                   </div>
@@ -217,7 +217,7 @@ const Website = () => {
                   </p>
                 </div>
                 
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <Search size={24} />
                   </div>
@@ -227,7 +227,7 @@ const Website = () => {
                   </p>
                 </div>
                 
-                <div className="bg-gray-50 rounded-xl p-8 hover-scale fade-in">
+                <div className="bg-gray-50 rounded-sm p-8 hover-scale fade-in">
                   <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-6">
                     <BarChart2 size={24} />
                   </div>
@@ -252,7 +252,7 @@ const Website = () => {
                   <img 
                     src="/uploads/services/responsive-showcase.jpg" 
                     alt="Website hiển thị trên nhiều thiết bị" 
-                    className="w-full h-auto rounded-xl shadow-xl"
+                    className="w-full h-auto rounded-sm shadow-xl"
                   />
                 </div>
                 
@@ -355,7 +355,7 @@ const Website = () => {
                     icon: <FileCheck size={24} />
                   }
                 ].map((step, index) => (
-                  <div key={index} className="bg-gray-50 p-8 rounded-xl hover-scale fade-in">
+                  <div key={index} className="bg-gray-50 p-8 rounded-sm hover-scale fade-in">
                     <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mb-6">
                       {step.icon}
                     </div>
@@ -381,7 +381,7 @@ const Website = () => {
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white rounded-xl shadow-lg p-8 hover-scale fade-in">
+                <div className="bg-white rounded-sm shadow-lg p-8 hover-scale fade-in">
                   <h3 className="text-2xl font-bold mb-2">Gói Cơ bản</h3>
                   <p className="text-gray-600 mb-6">Lý tưởng cho cá nhân và doanh nghiệp nhỏ</p>
                   <div className="text-4xl font-bold mb-6">3.999.000 ₫</div>
@@ -416,7 +416,7 @@ const Website = () => {
                   </button>
                 </div>
                 
-                <div className="bg-white rounded-xl shadow-lg p-8 hover-scale fade-in relative border-2 border-black transform scale-105 z-10">
+                <div className="bg-white rounded-sm shadow-lg p-8 hover-scale fade-in relative border-2 border-black transform scale-105 z-10">
                   <div className="absolute -top-4 right-8 bg-black text-white px-4 py-1 text-sm">
                     Phổ biến nhất
                   </div>
@@ -460,7 +460,7 @@ const Website = () => {
                   </button>
                 </div>
                 
-                <div className="bg-white rounded-xl shadow-lg p-8 hover-scale fade-in">
+                <div className="bg-white rounded-sm shadow-lg p-8 hover-scale fade-in">
                   <h3 className="text-2xl font-bold mb-2">Gói Doanh nghiệp lớn</h3>
                   <p className="text-gray-600 mb-6">Cho doanh nghiệp có yêu cầu cao</p>
                   <div className="text-4xl font-bold mb-6">Liên hệ</div>
@@ -508,7 +508,7 @@ const Website = () => {
           <section className="bg-white py-20">
             <div className="section-container">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg fade-in">
                   <h3 className="text-2xl font-bold mb-4">Hỗ trợ 24/7</h3>
                   <p className="text-gray-600 mb-6">
                     Nhận hỗ trợ từ đội ngũ chuyên gia của NiceTech bất kỳ lúc nào bạn cần.
@@ -518,7 +518,7 @@ const Website = () => {
                   </a>
                 </div>
                 
-                <div className="bg-gray-50 p-8 rounded-xl shadow-lg fade-in">
+                <div className="bg-gray-50 p-8 rounded-sm shadow-lg fade-in">
                   <h3 className="text-2xl font-bold mb-4">Đào tạo sử dụng</h3>
                   <p className="text-gray-600 mb-6">
                     Chúng tôi cung cấp hướng dẫn chi tiết và đào tạo đội ngũ của bạn sử dụng website hiệu quả.

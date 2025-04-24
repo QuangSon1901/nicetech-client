@@ -143,7 +143,7 @@ const ExploreTemplates = () => {
                     key={index}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white rounded-lg shadow-lg overflow-hidden hover-scale fade-in"
+                    className="bg-white rounded-sm shadow-lg overflow-hidden hover-scale fade-in"
                   >
                     <div className="h-64 overflow-hidden">
                       <img
@@ -175,28 +175,28 @@ const ExploreTemplates = () => {
                 <h2 className="text-3xl font-bold mb-10 text-center">Câu hỏi thường gặp</h2>
                 
                 <div className="space-y-6">
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="bg-white p-6 rounded-sm shadow-sm">
                     <h3 className="text-xl font-bold mb-3">Tôi có thể tùy chỉnh mẫu website này không?</h3>
                     <p className="text-gray-600">
                       Tất cả mẫu website của NiceTech đều có thể tùy chỉnh để phù hợp với thương hiệu và nhu cầu kinh doanh của bạn.
                     </p>
                   </div>
                   
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="bg-white p-6 rounded-sm shadow-sm">
                     <h3 className="text-xl font-bold mb-3">Chi phí để sử dụng mẫu website này là bao nhiêu?</h3>
                     <p className="text-gray-600">
                       Chi phí sẽ phụ thuộc vào mức độ tùy chỉnh và các tính năng bổ sung mà bạn cần. Vui lòng liên hệ với chúng tôi để nhận báo giá chi tiết.
                     </p>
                   </div>
                   
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="bg-white p-6 rounded-sm shadow-sm">
                     <h3 className="text-xl font-bold mb-3">Thời gian hoàn thiện một website như thế nào?</h3>
                     <p className="text-gray-600">
                       Thông thường, thời gian hoàn thiện một website dựa trên mẫu là từ 7-15 ngày tùy theo quy mô và yêu cầu cụ thể.
                     </p>
                   </div>
                   
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="bg-white p-6 rounded-sm shadow-sm">
                     <h3 className="text-xl font-bold mb-3">Tôi cần chuẩn bị nội dung gì cho website?</h3>
                     <p className="text-gray-600">
                       Bạn cần chuẩn bị nội dung văn bản, hình ảnh và các thông tin liên quan đến doanh nghiệp. NiceTech cũng có thể hỗ trợ bạn trong việc tạo nội dung nếu cần.
