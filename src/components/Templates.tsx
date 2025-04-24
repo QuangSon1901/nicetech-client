@@ -175,7 +175,7 @@ const Templates = () => {
               key={index}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:scale-[1.02] transition-transform duration-300"
+              className="bg-white rounded-sm shadow-lg overflow-hidden hover:scale-[1.02] transition-transform duration-300"
             >
               <div className="h-64 overflow-hidden">
                 <img

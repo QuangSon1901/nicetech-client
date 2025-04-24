@@ -61,7 +61,7 @@ const Testimonials = () => {
             {[...logos, ...logos].map((logo, index) => (
               <div 
                 key={index} 
-                className={`${logo.width} h-16 bg-white rounded-xl flex items-center justify-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 px-6 opacity-90 hover:opacity-100`}
+                className={`${logo.width} h-16 bg-white rounded-sm flex items-center justify-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 px-6 opacity-90 hover:opacity-100`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <span className="text-gray-500 font-medium">{logo.name}</span>
@@ -82,7 +82,7 @@ const Testimonials = () => {
                     : 'opacity-0 translate-y-8 absolute top-0 left-0 w-full'
                 }`}
               >
-                <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl relative border border-gray-100">
+                <div className="bg-white p-8 md:p-12 rounded-sm shadow-xl relative border border-gray-100">
                   <div className="absolute -top-6 left-8 w-12 h-12 rounded-full bg-black flex items-center justify-center text-white">
                     <Quote size={24} className="transform rotate-180" />
                   </div>

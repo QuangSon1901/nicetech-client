@@ -6,11 +6,11 @@ const footerLinks = [
   {
     title: "Website",
     links: [
-      { name: "Website", href: "#" },
-      { name: "Khám phá mẫu", href: "#" },
-      { name: "Portfolios", href: "#" },
-      { name: "Blogs", href: "#" },
-      { name: "Doanh nghiệp", href: "#" },
+      { name: "Website", href: "/dich-vu/website" },
+      { name: "Khám phá mẫu", href: "/dich-vu/kham-pha-mau" },
+      { name: "Portfolios", href: "/dich-vu/portfolios" },
+      { name: "Blogs", href: "/dich-vu/blogs" },
+      { name: "Doanh nghiệp", href: "/dich-vu/doanh-nghiep" },
     ]
   },
   {

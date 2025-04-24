@@ -19,7 +19,7 @@ const Hero = () => {
             <ArrowRight size={18} className="ml-2" />
           </button>
         </div>
-        <div className="w-full h-[500px] md:h-[600px] bg-gray-100 relative overflow-hidden rounded-xl">
+        <div className="w-full h-[500px] md:h-[600px] bg-gray-100 relative overflow-hidden rounded-sm">
           <img 
             src="/uploads/hero.jpg" 
             alt="Website mẫu" 

@@ -7,20 +7,20 @@ const serviceLinks = [
   {
     title: "Website",
     links: [
-      { name: "Website", href: "#" },
-      { name: "Khám phá mẫu", href: "#" },
-      { name: "Portfolios", href: "#" },
-      { name: "Blogs", href: "#" },
-      { name: "Doanh nghiệp", href: "#" },
+      { name: "Website", href: "/dich-vu/website" },
+      { name: "Khám phá mẫu", href: "/dich-vu/kham-pha-mau" },
+      { name: "Portfolios", href: "/dich-vu/portfolios" },
+      { name: "Blogs", href: "/dich-vu/blogs" },
+      { name: "Doanh nghiệp", href: "/dich-vu/doanh-nghiep" },
     ]
   },
   {
     title: "Commerce",
     links: [
-      { name: "Ecommerce", href: "#" },
-      { name: "Khám phá mẫu", href: "#" },
-      { name: "Bán hàng online", href: "#" },
-      { name: "Ngành dịch vụ", href: "#" },
+      { name: "Ecommerce", href: "/dich-vu/ecommerce" },
+      { name: "Khám phá mẫu", href: "/dich-vu/kham-pha-mau" },
+      { name: "Bán hàng online", href: "/dich-vu/ban-hang-online" },
+      { name: "Ngành dịch vụ", href: "/dich-vu/nganh-dich-vu" },
     ]
   },
   {
@@ -68,7 +68,7 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#gioi-thieu" className="text-gray-800 hover:text-black font-medium">Giới thiệu</a>
+            <a href="/gioi-thieu" className="text-gray-800 hover:text-black font-medium">Giới thiệu</a>
 
             {/* Services Dropdown */}
             <div className="relative" ref={navItemRef}>
