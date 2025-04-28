@@ -48,7 +48,7 @@ const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-200">
       <div className="section-container py-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <a href="/" className="text-2xl font-bold mb-6 inline-block">
               <img className='h-8' src="/uploads/logos/header-logo.png" alt="NiceTech" />

@@ -1,4 +1,6 @@
+// src/pages/Projects.tsx
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
@@ -11,178 +13,161 @@ import {
   Search,
   Globe
 } from "lucide-react";
+import { getProjects, getProjectCategories } from "../services/api";
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState("Tất cả");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProjects, setFilteredProjects] = useState([]);
+  // Use search params for URL-based state
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  // Initialize state from URL parameters
+  const [activeCategory, setActiveCategory] = useState(searchParams.get("category") || "Tất cả");
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
+  const [actualSearchQuery, setActualSearchQuery] = useState(searchParams.get("search") || "");
+  const [page, setPage] = useState(parseInt(searchParams.get("page") || "1", 10));
+  
+  const [projects, setProjects] = useState([]);
+  const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const categories = [
-    "Tất cả",
-    "Nhà hàng",
-    "Du lịch",
-    "Giáo dục",
-    "Doanh nghiệp",
-    "E-commerce",
-    "Portfolio",
-    "Blog"
-  ];
-
-  const projects = [
-    {
-      id: 1,
-      name: "AISUKI - Nhà hàng Châu Á",
-      category: "Nhà hàng",
-      year: "2023",
-      image: "/uploads/projects/aisuki.webp",
-      description: "Website đặt món online cho nhà hàng món ăn Châu Á với thiết kế hiện đại, hệ thống đặt bàn và giao hàng tận nơi.",
-      link: "https://aisuki.nicetech.vn",
-      featured: true,
-      technologies: ["React", "Node.js", "MongoDB"]
-    },
-    {
-      id: 2,
-      name: "NextGen Chess - Chương trình giảng dạy cờ vua Song ngữ",
-      category: "Giáo dục",
-      year: "2023",
-      image: "/uploads/projects/nextgenchess.webp",
-      description: "Website giáo dục cờ vua với khả năng đăng ký khóa học trực tuyến, theo dõi tiến độ học tập và thanh toán học phí.",
-      link: "https://nextgen-chess-academy.nicetech.vn",
-      featured: true,
-      technologies: ["React", "Express.js", "PostgreSQL"]
-    },
-    {
-      id: 3,
-      name: "TT Plywood - Nhà phân phối ván ép hàng đầu",
-      category: "Doanh nghiệp",
-      year: "2022",
-      image: "/uploads/projects/ttplywood.webp",
-      description: "Website doanh nghiệp cho nhà sản xuất ván ép với danh mục sản phẩm chi tiết, thông tin kỹ thuật và hệ thống liên hệ báo giá.",
-      link: "https://ttplywood.vn",
-      featured: true,
-      technologies: ["WordPress", "WooCommerce", "PHP"]
-    },
-    {
-      id: 4,
-      name: "Du thuyền - Trải nghiệm Du lịch",
-      category: "Du lịch",
-      year: "2023",
-      image: "/uploads/projects/duthuyen.webp",
-      description: "Website đặt tour du thuyền với thiết kế sang trọng, trình diễn hình ảnh 360° và hệ thống thanh toán trực tuyến đa cổng.",
-      link: "https://template.nicetech.vn/demo/duthuyen/demo1.html",
-      featured: false,
-      technologies: ["HTML5", "CSS3", "JavaScript"]
-    },
-    {
-      id: 5,
-      name: "Nguyen Sinh Bistro – Ẩm thực Việt - Pháp",
-      category: "Nhà hàng",
-      year: "2023",
-      image: "/uploads/projects/nguyensinh.webp",
-      description: "Website nhà hàng với thiết kế tối giản, menu trực tuyến và hệ thống đặt bàn tích hợp. Giao diện đa ngôn ngữ Việt-Anh-Pháp.",
-      link: "https://template.nicetech.vn/demo/nguyensinh/",
-      featured: false,
-      technologies: ["Vue.js", "Firebase", "Tailwind CSS"]
-    },
-    {
-      id: 6,
-      name: "Xuất khẩu cà phê chất lượng cao",
-      category: "Doanh nghiệp",
-      year: "2022",
-      image: "/uploads/projects/vietbeans-cf.webp",
-      description: "Website giới thiệu sản phẩm cà phê xuất khẩu với thông tin chi tiết về nguồn gốc, chất lượng và quy trình sản xuất.",
-      link: "https://template.nicetech.vn/demo/vietbeans-cf/demo1.html",
-      featured: false,
-      technologies: ["WordPress", "Elementor", "WooCommerce"]
-    },
-    {
-      id: 7,
-      name: "GreenHaven Garden - Dịch vụ sân vườn",
-      category: "Doanh nghiệp",
-      year: "2023",
-      image: "/uploads/projects/greenhaven.webp",
-      description: "Website dịch vụ chăm sóc sân vườn với đặt lịch tự động, báo giá trực tuyến và thư viện hình ảnh công trình thực tế.",
-      link: "http://template.nicetech.vn/demo/greenhaven",
-      featured: false,
-      technologies: ["React", "Node.js", "MongoDB"]
-    },
-    {
-      id: 8,
-      name: "Nền tảng đặt homestay",
-      category: "Du lịch",
-      year: "2023",
-      image: "/uploads/projects/homestay.webp",
-      description: "Website đặt homestay với khả năng lọc theo khu vực, giá cả và tiện ích. Tích hợp đánh giá và bình luận từ người dùng thực.",
-      link: "http://template.nicetech.vn/demo/homestay/demo1.html",
-      featured: false,
-      technologies: ["Next.js", "Prisma", "PostgreSQL"]
-    },
-    {
-      id: 9,
-      name: "Giới thiệu tác phẩm nghệ thuật",
-      category: "Portfolio",
-      year: "2022",
-      image: "/uploads/projects/lisson-clone-canvas.webp",
-      description: "Website portfolio nghệ thuật với hiệu ứng chuyển động mượt mà, thư viện tác phẩm phân loại theo chủ đề và nghệ sĩ.",
-      link: "http://template.nicetech.vn/demo/lisson-clone-canvas",
-      featured: false,
-      technologies: ["HTML5", "CSS3", "JavaScript", "GSAP"]
-    },
-    {
-      id: 10,
-      name: "Website thú cưng iMeo",
-      category: "E-commerce",
-      year: "2023",
-      image: "/uploads/projects/imeo.webp",
-      description: "Website thương mại điện tử chuyên về sản phẩm cho thú cưng với hệ thống thanh toán trực tuyến và giao hàng nhanh.",
-      link: "https://template.nicetech.vn/demo/petshop/",
-      featured: false,
-      technologies: ["WordPress", "WooCommerce", "PayPal API"]
-    },
-    {
-      id: 11,
-      name: "Giới thiệu công ty Sunlogo",
-      category: "Doanh nghiệp",
-      year: "2022",
-      image: "/uploads/projects/sunlogo.webp",
-      description: "Website doanh nghiệp với thiết kế hiện đại, giới thiệu sản phẩm và dịch vụ một cách chuyên nghiệp, tối ưu SEO.",
-      link: "https://template.nicetech.vn/demo/sunlogo/demo1.html",
-      featured: false,
-      technologies: ["React", "Gatsby", "Contentful"]
-    },
-    {
-      id: 12,
-      name: "Nền tảng luyện thi Tokuteigino",
-      category: "Giáo dục",
-      year: "2023",
-      image: "/uploads/projects/tokutegino.webp",
-      description: "Website học trực tuyến với hệ thống bài giảng video, bài tập tương tác và đánh giá tiến độ học tập tự động.",
-      link: "https://template.nicetech.vn/demo/tokuteigino/demo1.html",
-      featured: false,
-      technologies: ["Angular", "Express.js", "MongoDB"]
-    }
-  ];
-
-  useEffect(() => {
-    // Filter projects based on category and search query
-    const result = projects.filter(project => {
-      const matchesCategory = activeCategory === "Tất cả" || project.category === activeCategory;
-      const matchesQuery = project.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                           project.description.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesQuery;
+  // Update URL when filters or pagination change
+  const updateUrlParams = (params: Record<string, string | null>) => {
+    const newParams = new URLSearchParams(searchParams);
+    
+    // Update each parameter
+    Object.entries(params).forEach(([key, value]) => {
+      if (value) {
+        newParams.set(key, value);
+      } else {
+        newParams.delete(key);
+      }
     });
-    setFilteredProjects(result);
-  }, [activeCategory, searchQuery]);
+    
+    // Apply the new URL params
+    setSearchParams(newParams);
+  };
 
-  // Get featured projects
-  const featuredProjects = projects.filter(project => project.featured);
+  // Fetch data on component mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch categories
+        const categoriesResponse = await getProjectCategories();
+        const categoriesData = [{ name: "Tất cả", id: null, slug: null }].concat(
+          categoriesResponse.data
+        );
+        setCategories(categoriesData);
+        
+        // Fetch featured projects
+        const featuredResponse = await getProjects({ 
+          featured: true,
+          limit: 3
+        });
+        setFeaturedProjects(featuredResponse.data);
+        
+        // Initial projects fetch will happen in the dependency-based useEffect
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        setError("Failed to load projects");
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Fetch projects based on current filters
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        
+        const categoryId = activeCategory !== "Tất cả" 
+          ? categories.find(c => c.name === activeCategory)?.id 
+          : undefined;
+          
+        const response = await getProjects({
+          categoryId,
+          search: actualSearchQuery || undefined,
+          page,
+          limit: 12
+        });
+        
+        setProjects(response.data);
+        setTotalPages(response.totalPages || 1);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching projects:", err);
+        setError("Failed to load projects");
+        setLoading(false);
+      }
+    };
+
+    if (categories.length > 0) {
+      fetchProjects();
+    }
+  }, [page, activeCategory, actualSearchQuery, categories]);
+
+  // Handle category change
+  const handleCategoryChange = (categoryName) => {
+    setActiveCategory(categoryName);
+    updateUrlParams({
+      category: categoryName !== "Tất cả" ? categoryName : null,
+      page: "1" // Reset to page 1 when changing category
+    });
+    setPage(1);
+  };
+
+  // Handle search typing - update URL but don't trigger search
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    updateUrlParams({
+      search: e.target.value || null
+    });
+  };
+
+  // Handle search submit - actually perform the search
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setActualSearchQuery(searchQuery);
+    updateUrlParams({
+      search: searchQuery || null,
+      page: "1" // Reset to page 1 when searching
+    });
+    setPage(1);
+  };
+
+  // Handle page change
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+    updateUrlParams({ page: newPage.toString() });
+    
+    // Scroll to projects grid
+    document.getElementById('projects-grid')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  if (loading && !projects.length) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-black border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-xl">Đang tải dự án...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
       <Helmet>
         <title>Dự án | NiceTech - Công ty thiết kế website chuyên nghiệp</title>
         <meta name="description" content="Khám phá bộ sưu tập các dự án website đã thực hiện bởi NiceTech - từ website doanh nghiệp, thương mại điện tử đến portfolio cá nhân." />
-        <link rel="canonical" href="https://nicetech.vn/du-an" />
+        <link rel="canonical" href={`https://nicetech.vn/du-an${searchParams.toString() ? `?${searchParams.toString()}` : ''}`} />
       </Helmet>
       <div className="bg-white min-h-screen">
         <Navbar />
@@ -199,20 +184,22 @@ const Projects = () => {
                 </p>
               </div>
 
-              {/* Featured Projects Carousel */}
+              {/* Featured Projects */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
                 {featuredProjects.map((project) => (
                   <div key={project.id} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
                     <div className="h-64 overflow-hidden">
                       <img 
-                        src={project.image} 
+                        src={project.image.startsWith('/uploads') 
+                          ? `${import.meta.env.VITE_API_URL}${project.image}` 
+                          : project.image}
                         alt={project.name} 
                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       />
                     </div>
                     <div className="p-6">
                       <div className="flex items-center mb-3">
-                        <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">{project.category}</span>
+                        <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">{project.category.name}</span>
                         <span className="text-xs text-gray-500 ml-2 flex items-center"><Calendar size={12} className="mr-1" /> {project.year}</span>
                       </div>
                       <h3 className="text-xl font-bold mb-3">{project.name}</h3>
@@ -234,31 +221,33 @@ const Projects = () => {
                 <h2 className="text-3xl font-bold mb-6 md:mb-0">Tất cả dự án</h2>
                 
                 <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
-                  {/* Search */}
-                  <div className="relative">
+                  {/* Search - only search on form submit */}
+                  <form onSubmit={handleSearchSubmit} className="relative">
                     <input 
                       type="text" 
                       placeholder="Tìm kiếm dự án..." 
                       className="pl-10 pr-4 py-2 border border-gray-200 rounded-full w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-black/10"
                       value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
+                      onChange={handleSearchChange}
+                      aria-label="Nhập từ khóa tìm kiếm và nhấn Enter"
                     />
                     <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
-                  </div>
+                    <button type="submit" className="sr-only">Tìm kiếm</button>
+                  </form>
                   
                   {/* Filter by category */}
                   <div className="flex flex-wrap gap-2">
                     {categories.map((category) => (
                       <button
-                        key={category}
-                        onClick={() => setActiveCategory(category)}
+                        key={category.id || "all"}
+                        onClick={() => handleCategoryChange(category.name)}
                         className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                          activeCategory === category
+                          activeCategory === category.name
                             ? "bg-black text-white"
                             : "bg-white border border-gray-200 text-gray-700 hover:bg-gray-100"
                         }`}
                       >
-                        {category}
+                        {category.name}
                       </button>
                     ))}
                   </div>
@@ -266,44 +255,109 @@ const Projects = () => {
               </div>
 
               {/* Projects Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProjects.map((project) => (
-                  <div key={project.id} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
-                    <div className="h-64 overflow-hidden">
-                      <img 
-                        src={project.image} 
-                        alt={project.name} 
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center mb-3">
-                        <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">{project.category}</span>
-                        <span className="text-xs text-gray-500 ml-2 flex items-center"><Calendar size={12} className="mr-1" /> {project.year}</span>
+              <div id="projects-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {loading ? (
+                  // Loading skeletons
+                  Array(6).fill(0).map((_, index) => (
+                    <div key={index} className="bg-white rounded-sm overflow-hidden shadow-lg animate-pulse">
+                      <div className="h-64 bg-gray-200"></div>
+                      <div className="p-6">
+                        <div className="h-4 bg-gray-200 rounded w-1/4 mb-3"></div>
+                        <div className="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
+                        <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+                        <div className="h-4 bg-gray-200 rounded w-1/2"></div>
                       </div>
-                      <h3 className="text-xl font-bold mb-3">{project.name}</h3>
-                      <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
-                      
-                      {/* Technologies */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.map((tech, index) => (
-                          <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                      
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-black font-medium flex items-center">
-                        Xem dự án <ExternalLink size={16} className="ml-2" />
-                      </a>
                     </div>
-                  </div>
-                ))}
+                  ))
+                ) : (
+                  // Actual projects
+                  projects.map((project) => (
+                    <div key={project.id} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
+                      <div className="h-64 overflow-hidden">
+                        <img 
+                          src={project.image.startsWith('/uploads') 
+                            ? `${import.meta.env.VITE_API_URL}${project.image}` 
+                            : project.image}
+                          alt={project.name} 
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center mb-3">
+                          <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">{project.category.name}</span>
+                          <span className="text-xs text-gray-500 ml-2 flex items-center"><Calendar size={12} className="mr-1" /> {project.year}</span>
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">{project.name}</h3>
+                        <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+                        
+                        {/* Technologies */}
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies.map((tech, index) => (
+                            <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-black font-medium flex items-center">
+                          Xem dự án <ExternalLink size={16} className="ml-2" />
+                        </a>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
               
-              {filteredProjects.length === 0 && (
+              {!loading && projects.length === 0 && (
                 <div className="text-center py-16">
                   <p className="text-xl text-gray-500">Không tìm thấy dự án phù hợp</p>
+                </div>
+              )}
+              
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex justify-center mt-12">
+                  <div className="flex items-center space-x-2">
+                    <button 
+                      onClick={() => handlePageChange(Math.max(1, page - 1))}
+                      disabled={page === 1}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                        page === 1 
+                          ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      } transition-colors`}
+                      aria-label="Previous page"
+                    >
+                      <ArrowRight size={20} className="rotate-180" />
+                    </button>
+                    
+                    {Array.from({ length: totalPages }, (_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => handlePageChange(i + 1)}
+                        className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                          page === i + 1
+                            ? 'bg-black text-white'
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        } transition-colors`}
+                      >
+                        {i + 1}
+                      </button>
+                    ))}
+                    
+                    <button 
+                      onClick={() => handlePageChange(Math.min(totalPages, page + 1))}
+                      disabled={page === totalPages}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                        page === totalPages 
+                          ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      } transition-colors`}
+                      aria-label="Next page"
+                    >
+                      <ArrowRight size={20} />
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
