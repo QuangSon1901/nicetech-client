@@ -119,7 +119,7 @@ const Navbar = () => {
             <a href="/du-an" className="text-gray-800 hover:text-black font-medium">Dự án</a>
             <a href="/khach-hang" className="text-gray-800 hover:text-black font-medium">Khách hàng</a>
             <a href="/blog" className="text-gray-800 hover:text-black font-medium">Blog</a>
-            <Button className="bg-black text-white rounded-none hover:bg-gray-800">Liên hệ ngay</Button>
+            <a href='/lien-he'><Button className="bg-black text-white rounded-none hover:bg-gray-800">Liên hệ ngay</Button></a>
           </nav>
 
           {/* Mobile menu button */}
@@ -212,7 +212,7 @@ const Navbar = () => {
             <a href="/khach-hang" className="block py-2 text-gray-800 hover:text-black font-medium">Khách hàng</a>
             <a href="/blog" className="block py-2 text-gray-800 hover:text-black font-medium">Blog</a>
             <div className="pt-2 flex flex-col space-y-4">
-              <Button className="w-full justify-center bg-black text-white rounded-none hover:bg-gray-800">Liên hệ ngay</Button>
+              <a href='/lien-he'><Button className="w-full justify-center bg-black text-white rounded-none hover:bg-gray-800">Liên hệ ngay</Button></a>
             </div>
           </div>
         </div>

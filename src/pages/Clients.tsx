@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
@@ -11,12 +12,69 @@ import {
   ChevronLeft, 
   ChevronRight,
   Search,
-  ExternalLink
+  ExternalLink,
+  Calendar
 } from "lucide-react";
+import { getProjects, getProjectCategories } from "../services/api";
 
-const Clients = () => {
-  const [activeTab, setActiveTab] = useState("Tất cả");
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
+// Định nghĩa các kiểu dữ liệu
+interface ProjectCategory {
+  id: number;
+  name: string;
+  slug: string;
+  description?: string;
+}
+
+interface Project {
+  id: number;
+  name: string;
+  categoryId: number;
+  category: ProjectCategory;
+  year: string;
+  image: string;
+  description: string;
+  link: string;
+  featured: boolean;
+  technologies: string[];
+}
+
+interface Client {
+  id: number;
+  name: string;
+  industry: string;
+  logo: string;
+  image?: string;
+  website: string;
+  description: string;
+}
+
+interface Testimonial {
+  id: number;
+  name: string;
+  title: string;
+  company: string;
+  quote: string;
+  image: string;
+}
+
+interface CaseStudy {
+  id: number;
+  client: string;
+  title: string;
+  image: string;
+  description: string;
+}
+
+const Clients: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<string>("Tất cả");
+  const [activeTestimonial, setActiveTestimonial] = useState<number>(0);
+  
+  // State cho dữ liệu API
+  const [categories, setCategories] = useState<ProjectCategory[]>([]);
+  const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
+  const [clientProjects, setClientProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
   
   const industries = [
     "Tất cả",
@@ -28,7 +86,8 @@ const Clients = () => {
     "Công nghiệp & Sản xuất"
   ];
   
-  const featuredClients = [
+  // Dữ liệu tĩnh cho phần clients
+  const featuredClients: Client[] = [
     {
       id: 1,
       name: "TT Plywood",
@@ -67,10 +126,8 @@ const Clients = () => {
     }
   ];
   
-  const clients = [
-    // Featured clients already included
+  const clients: Client[] = [
     ...featuredClients,
-    // Additional clients
     {
       id: 5,
       name: "GreenHaven Garden",
@@ -137,7 +194,7 @@ const Clients = () => {
     }
   ];
   
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       id: 1,
       name: "Nguyễn Đình Quân",
@@ -164,7 +221,7 @@ const Clients = () => {
     }
   ];
   
-  const caseStudies = [
+  const caseStudies: CaseStudy[] = [
     {
       id: 1,
       client: "AISUKI Restaurant",
@@ -188,10 +245,58 @@ const Clients = () => {
     }
   ];
   
+  // Fetch dữ liệu từ API khi component mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        
+        // Xử lý song song các request API
+        const [categoriesResponse, featuredResponse, recentResponse] = await Promise.all([
+          getProjectCategories(),
+          getProjects({ featured: true, limit: 4 }),
+          getProjects({ limit: 6, page: 1 })
+        ]);
+        
+        // Kiểm tra và set dữ liệu
+        if (categoriesResponse?.data) {
+          setCategories(categoriesResponse.data);
+        }
+        
+        if (featuredResponse?.data) {
+          setFeaturedProjects(featuredResponse.data);
+        }
+        
+        if (recentResponse?.data) {
+          setClientProjects(recentResponse.data);
+        }
+        
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        setError("Không thể tải dữ liệu dự án. Vui lòng thử lại sau.");
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   // Filter clients based on selected industry
-  const filteredClients = activeTab === "Tất cả" 
-    ? clients 
-    : clients.filter(client => client.industry === activeTab);
+  const filteredClients = React.useMemo(() => {
+    return activeTab === "Tất cả" 
+      ? clients 
+      : clients.filter(client => client.industry === activeTab);
+  }, [activeTab]);
+  
+  // Xử lý đường dẫn hình ảnh
+  const getImageUrl = (imagePath: string): string => {
+    if (!imagePath) return "";
+    
+    return imagePath.startsWith('/uploads') 
+      ? `${import.meta.env.VITE_API_URL || ''}${imagePath}` 
+      : imagePath;
+  };
   
   const prevTestimonial = () => {
     setActiveTestimonial(prev => 
@@ -235,7 +340,7 @@ const Clients = () => {
                 <div className="overflow-hidden">
                   <div className="flex animate-marquee">
                     {clients.map((client, index) => (
-                      <div key={index} className="mx-8 flex-shrink-0 w-32 h-32 flex items-center justify-center">
+                      <div key={`client-${index}`} className="mx-8 flex-shrink-0 w-32 h-32 flex items-center justify-center">
                         <img 
                           src={client.logo} 
                           alt={client.name} 
@@ -245,7 +350,7 @@ const Clients = () => {
                     ))}
                     {/* Repeat logos for continuous scrolling */}
                     {clients.map((client, index) => (
-                      <div key={`repeat-${index}`} className="mx-8 flex-shrink-0 w-32 h-32 flex items-center justify-center">
+                      <div key={`repeat-client-${index}`} className="mx-8 flex-shrink-0 w-32 h-32 flex items-center justify-center">
                         <img 
                           src={client.logo} 
                           alt={client.name} 
@@ -257,18 +362,84 @@ const Clients = () => {
                 </div>
               </div>
               
+              {/* Thêm phần hiển thị dự án nổi bật từ API */}
+              <div className="mt-20">
+                <h2 className="text-3xl font-bold mb-6 text-center">Dự án nổi bật</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-10">
+                  Những dự án tiêu biểu mà chúng tôi đã thực hiện cho khách hàng
+                </p>
+                
+                {loading ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {[1, 2, 3, 4].map((_, index) => (
+                      <div key={`skeleton-featured-${index}`} className="bg-gray-100 animate-pulse rounded-sm h-80"></div>
+                    ))}
+                  </div>
+                ) : error ? (
+                  <div className="text-center py-10">
+                    <p className="text-red-500">{error}</p>
+                  </div>
+                ) : featuredProjects.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {featuredProjects.map((project) => (
+                      <div key={`featured-project-${project.id}`} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
+                        <div className="h-48 overflow-hidden">
+                          <img 
+                            src={getImageUrl(project.image)}
+                            alt={project.name} 
+                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                          />
+                        </div>
+                        <div className="p-6">
+                          <div className="flex items-center mb-3">
+                            <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">
+                              {project.category?.name || "Dự án"}
+                            </span>
+                            <span className="text-xs text-gray-500 ml-2 flex items-center">
+                              <Calendar size={12} className="mr-1" /> {project.year}
+                            </span>
+                          </div>
+                          <h3 className="text-xl font-bold mb-3">{project.name}</h3>
+                          <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+                          <a 
+                            href={project.link} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-black font-medium flex items-center"
+                          >
+                            Xem dự án <ExternalLink size={16} className="ml-2" />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-10">
+                    <p className="text-gray-500">Không có dự án nổi bật</p>
+                  </div>
+                )}
+                
+                <div className="text-center mt-10">
+                  <Link to="/du-an" className="btn-primary inline-flex items-center">
+                    Xem tất cả dự án <ArrowRight size={18} className="ml-2" />
+                  </Link>
+                </div>
+              </div>
+              
               {/* Featured Clients */}
               <div className="mt-20">
                 <h2 className="text-3xl font-bold mb-12 text-center">Khách hàng tiêu biểu</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {featuredClients.map((client) => (
-                    <div key={client.id} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
+                    <div key={`featured-client-${client.id}`} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
                       <div className="h-48 overflow-hidden">
-                        <img 
-                          src={client.image} 
-                          alt={client.name} 
-                          className="w-full h-full object-cover"
-                        />
+                        {client.image && (
+                          <img 
+                            src={client.image} 
+                            alt={client.name} 
+                            className="w-full h-full object-cover"
+                          />
+                        )}
                       </div>
                       <div className="p-6">
                         <div className="flex items-center mb-4">
@@ -312,66 +483,150 @@ const Clients = () => {
               </div>
               
               <div className="relative">
-                <div className="mx-auto max-w-4xl bg-white p-8 md:p-12 rounded-sm shadow-lg fade-in">
-                  <div className="absolute top-4 left-8 text-gray-200">
-                    <Quote size={64} />
-                  </div>
-                  
-                  <div className="flex flex-col md:flex-row items-center">
-                    <div className="md:w-1/3 mb-6 md:mb-0">
-                      <div className="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg">
-                        <img 
-                          src={testimonials[activeTestimonial].image}
-                          alt={testimonials[activeTestimonial].name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                {testimonials.length > 0 && (
+                  <div className="mx-auto max-w-4xl bg-white p-8 md:p-12 rounded-sm shadow-lg fade-in">
+                    <div className="absolute top-4 left-8 text-gray-200">
+                      <Quote size={64} />
                     </div>
                     
-                    <div className="md:w-2/3 md:pl-8">
-                      <div className="flex mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                        ))}
+                    <div className="flex flex-col md:flex-row items-center">
+                      <div className="md:w-1/3 mb-6 md:mb-0">
+                        <div className="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg">
+                          <img 
+                            src={testimonials[activeTestimonial]?.image}
+                            alt={testimonials[activeTestimonial]?.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                       </div>
                       
-                      <p className="text-lg text-gray-700 italic mb-6 relative z-10">
-                        {testimonials[activeTestimonial].quote}
-                      </p>
-                      
-                      <div>
-                        <p className="font-bold text-lg">{testimonials[activeTestimonial].name}</p>
-                        <p className="text-gray-600">
-                          {testimonials[activeTestimonial].title}, {testimonials[activeTestimonial].company}
+                      <div className="md:w-2/3 md:pl-8">
+                        <div className="flex mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={`star-${i}`} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                          ))}
+                        </div>
+                        
+                        <p className="text-lg text-gray-700 italic mb-6 relative z-10">
+                          {testimonials[activeTestimonial]?.quote}
                         </p>
+                        
+                        <div>
+                          <p className="font-bold text-lg">{testimonials[activeTestimonial]?.name}</p>
+                          <p className="text-gray-600">
+                            {testimonials[activeTestimonial]?.title}, {testimonials[activeTestimonial]?.company}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
                 
-                <div className="flex justify-center mt-8 space-x-4">
-                  <button 
-                    onClick={prevTestimonial}
-                    className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
-                    aria-label="Previous testimonial"
-                  >
-                    <ChevronLeft size={24} />
-                  </button>
-                  
-                  <button 
-                    onClick={nextTestimonial}
-                    className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
-                    aria-label="Next testimonial"
-                  >
-                    <ChevronRight size={24} />
-                  </button>
+                {testimonials.length > 1 && (
+                  <div className="flex justify-center mt-8 space-x-4">
+                    <button 
+                      onClick={prevTestimonial}
+                      className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+                      aria-label="Lời chứng thực trước đó"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    
+                    <button 
+                      onClick={nextTestimonial}
+                      className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors"
+                      aria-label="Lời chứng thực tiếp theo"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+          
+          {/* Các dự án theo từng khách hàng */}
+          <section className="bg-white py-24">
+            <div className="section-container">
+              <div className="text-center mb-16 fade-in">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Dự án đã thực hiện</h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  Một số dự án mới nhất mà chúng tôi đã triển khai cho khách hàng
+                </p>
+              </div>
+              
+              {loading ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[1, 2, 3, 4, 5, 6].map((_, index) => (
+                    <div key={`skeleton-project-${index}`} className="bg-gray-100 animate-pulse rounded-sm h-80"></div>
+                  ))}
                 </div>
+              ) : error ? (
+                <div className="text-center py-10">
+                  <p className="text-red-500">{error}</p>
+                </div>
+              ) : clientProjects.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {clientProjects.map((project) => (
+                    <div key={`project-${project.id}`} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
+                      <div className="h-64 overflow-hidden">
+                        <img 
+                          src={getImageUrl(project.image)}
+                          alt={project.name} 
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center mb-3">
+                          <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">
+                            {project.category?.name || "Dự án"}
+                          </span>
+                          <span className="text-xs text-gray-500 ml-2 flex items-center">
+                            <Calendar size={12} className="mr-1" /> {project.year}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">{project.name}</h3>
+                        <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+                        
+                        {/* Technologies */}
+                        {project.technologies && project.technologies.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.technologies.map((tech, index) => (
+                              <span key={`tech-${project.id}-${index}`} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-black font-medium flex items-center"
+                        >
+                          Xem dự án <ExternalLink size={16} className="ml-2" />
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-10">
+                  <p className="text-gray-500">Không có dự án nào</p>
+                </div>
+              )}
+              
+              <div className="text-center mt-12">
+                <Link to="/du-an" className="btn-primary inline-flex items-center">
+                  Khám phá thêm dự án <ArrowRight size={18} className="ml-2" />
+                </Link>
               </div>
             </div>
           </section>
           
           {/* All Clients Section */}
-          <section className="bg-white py-24">
+          <section className="bg-gray-50 py-24">
             <div className="section-container">
               <div className="text-center mb-16 fade-in">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Khách hàng theo ngành</h2>
@@ -384,7 +639,7 @@ const Clients = () => {
               <div className="flex flex-wrap justify-center gap-3 mb-12">
                 {industries.map((industry) => (
                   <button
-                    key={industry}
+                    key={`industry-${industry}`}
                     onClick={() => setActiveTab(industry)}
                     className={`px-4 py-2 rounded-full text-sm ${
                       activeTab === industry
@@ -400,7 +655,7 @@ const Clients = () => {
               {/* Clients Grid */}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
                 {filteredClients.map((client) => (
-                  <div key={client.id} className="bg-white rounded-sm border border-gray-100 p-4 hover:shadow-md transition-shadow hover-scale fade-in">
+                  <div key={`grid-client-${client.id}`} className="bg-white rounded-sm border border-gray-100 p-4 hover:shadow-md transition-shadow hover-scale fade-in">
                     <div className="h-20 flex items-center justify-center mb-4">
                       <img 
                         src={client.logo} 
@@ -425,7 +680,7 @@ const Clients = () => {
           </section>
           
           {/* Case Studies */}
-          <section className="bg-gray-50 py-24">
+          <section className="bg-white py-24">
             <div className="section-container">
               <div className="text-center mb-16 fade-in">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Câu chuyện thành công</h2>
@@ -436,7 +691,7 @@ const Clients = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {caseStudies.map((caseStudy) => (
-                  <div key={caseStudy.id} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
+                  <div key={`case-study-${caseStudy.id}`} className="bg-white rounded-sm overflow-hidden shadow-lg hover-scale fade-in">
                     <div className="h-56 overflow-hidden">
                       <img 
                         src={caseStudy.image} 
@@ -467,7 +722,7 @@ const Clients = () => {
           </section>
           
           {/* Trust Badges */}
-          <section className="bg-white py-20">
+          <section className="bg-gray-50 py-20">
             <div className="section-container">
               <div className="text-center mb-12 fade-in">
                 <h2 className="text-3xl font-bold mb-6">Tại sao khách hàng tin tưởng chúng tôi</h2>
@@ -496,7 +751,7 @@ const Clients = () => {
                     description: "Giúp khách hàng đạt thứ hạng cao trên công cụ tìm kiếm"
                   }
                 ].map((badge, index) => (
-                  <div key={index} className="bg-gray-50 p-6 rounded-sm text-center hover-scale fade-in">
+                  <div key={`badge-${index}`} className="bg-gray-50 p-6 rounded-sm text-center hover-scale fade-in">
                     <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4">
                       {badge.icon}
                     </div>
@@ -518,12 +773,12 @@ const Clients = () => {
                 Liên hệ với NiceTech ngay hôm nay để được tư vấn miễn phí về giải pháp website phù hợp với doanh nghiệp của bạn.
               </p>
               <div className="flex flex-col md:flex-row justify-center gap-4">
-                <button className="bg-white text-black px-8 py-4 font-medium hover:bg-gray-100 transition-colors duration-300 text-lg">
+                <Link to="/lien-he" className="bg-white text-black px-8 py-4 font-medium hover:bg-gray-100 transition-colors duration-300 text-lg">
                   Liên hệ ngay
-                </button>
-                <button className="border border-white text-white px-8 py-4 font-medium hover:bg-white/10 transition-colors duration-300 text-lg">
+                </Link>
+                <Link to="/lien-he" className="border border-white text-white px-8 py-4 font-medium hover:bg-white/10 transition-colors duration-300 text-lg">
                   Nhận báo giá
-                </button>
+                </Link>
               </div>
             </div>
           </section>
