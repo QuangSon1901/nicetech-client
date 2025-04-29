@@ -90,8 +90,8 @@ const Templates = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Giao diện mẫu
             </h2>
-            <p className="text-lg text-gray-600 max-w-lg">
-              Tham khảo các dự án thực tế được triển khai bởi team Nicetech.
+            <p className="text-lg text-gray-600 max-w-xl">
+              Tham khảo các dự án thực tế được triển khai bởi team NiceTech.
             </p>
           </div>
           <a href="/du-an"
