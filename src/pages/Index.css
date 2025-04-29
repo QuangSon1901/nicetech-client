@@ -1,0 +1,84 @@
+/* Animation cho underline */
+.sliding-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.sliding-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 100%;
+    background: #000000;
+    transform-origin: left;
+    animation: slideUnderline 2s infinite;
+}
+
+@keyframes slideUnderline {
+    0% {
+        transform: scaleX(0);
+    }
+
+    50% {
+        transform: scaleX(1);
+    }
+
+    50.1% {
+        transform-origin: right;
+    }
+
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+/* Animation cho mũi tên */
+.arrow-container {
+    position: relative;
+    height: 18px;
+    width: 18px;
+    overflow: hidden;
+}
+
+.template-btn .arrow-icon {
+    position: relative;
+}
+
+.template-btn:hover .arrow-icon {
+    animation: arrowJump .8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes arrowJump {
+    0% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateY(100%);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    65% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}

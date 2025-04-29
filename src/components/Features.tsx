@@ -3,21 +3,21 @@ import { ArrowRight } from 'lucide-react';
 
 const features = [
   {
-    title: "Thiết kế Website",
-    description: "Tạo dựng hình ảnh thương hiệu với website chuyên nghiệp, chuẩn UX/UI, tối ưu SEO.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    title: "Website thương hiệu chuyên nghiệp & chuẩn SEO",
+    description: "Chúng tôi tạo ra website ấn tượng, chuẩn SEO và tối ưu trải nghiệm người dùng - giúp thương hiệu của bạn nổi bật và thu hút đúng khách hàng tiềm năng.",
+    image: "uploads/features/website.png",
     link: "#"
   },
   {
-    title: "Thương mại điện tử",
-    description: "Xây dựng nền tảng bán hàng trực tuyến mạnh mẽ, linh hoạt và dễ quản lý.",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    title: "Nền tảng bán hàng trực tuyến hiệu quả - Ecommerce",
+    description: "Sở hữu ngay cửa hàng online với đầy đủ tính năng quản lý sản phẩm, đơn hàng và thanh toán bảo mật - giúp cửa hàng của bạn mở rộng thị trường không giới hạn.",
+    image: "uploads/features/ecommerce.png",
     link: "#"
   },
   {
-    title: "Hệ thống ERP",
-    description: "Tối ưu quy trình quản lý doanh nghiệp với hệ thống ERP tích hợp – từ bán hàng, kho đến tài chính.",
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    title: "ERP - Giải pháp quản lý doanh nghiệp toàn diện",
+    description: "Hệ thống ERP thông minh giúp bạn kiểm soát chặt chẽ mọi hoạt động từ bán hàng, kho vận, tài chính đến nhân sự - tối ưu vận hành và thúc đẩy tăng trưởng.",
+    image: "uploads/features/erp.jpg",
     link: "#"
   }
 ];
@@ -26,26 +26,28 @@ const Features = () => {
   return (
     <section className="bg-white" id="products">
       <div className="section-container">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Tất cả công cụ bạn cần</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Doanh nghiệp của bạn đang cần gì?</h2>
         <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
-          Giải pháp toàn diện để xây dựng thương hiệu, vận hành kinh doanh và phát triển khách hàng.
+          Bạn đang tìm kiếm một website thương hiệu ấn tượng, một cửa hàng trực tuyến bán hàng hiệu quả, hay một hệ thống quản lý toàn diện cho doanh nghiệp?
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="hover-scale group">
-              <div className="h-64 mb-4 overflow-hidden rounded-sm">
+            <div key={index} className="group border rounded-md pb-4 overflow-hidden">
+              <div className="h-64 mb-4 overflow-hidden">
                 <img 
                   src={feature.image} 
                   alt={feature.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500"
                 />
               </div>
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 mb-4">{feature.description}</p>
-              <a href={feature.link} className="inline-flex items-center font-medium text-black hover:underline">
-                Tìm hiểu thêm <ArrowRight size={16} className="ml-2" />
-              </a>
+              <div className='px-4'>
+                <h3 className="text-xl font-bold mb-2"><a href={feature.link}>{feature.title}</a></h3>
+                <p className="text-gray-600 mb-4">{feature.description}</p>
+                <a href={feature.link} className="inline-flex items-center font-medium text-black hover:underline">
+                  Tìm hiểu thêm <ArrowRight size={16} className="ml-2" />
+                </a>
+              </div>
             </div>
           ))}
         </div>

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
+import './App.css'
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";

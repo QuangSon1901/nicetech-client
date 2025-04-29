@@ -8,6 +8,7 @@ import Pricing from "../components/Pricing";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
+import './Index.css'
 
 const Index = () => {
   useEffect(() => {
