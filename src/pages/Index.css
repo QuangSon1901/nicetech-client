@@ -82,3 +82,30 @@
         opacity: 1;
     }
 }
+
+@keyframes marquee {
+0% {
+    transform: translateX(0);
+}
+100% {
+    transform: translateX(-50%);
+}
+}
+
+.logo-marquee {
+animation: marquee 30s linear infinite;
+}
+
+@keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .logos-slide {
+    animation: slide 30s linear infinite;
+    width: fit-content;
+  }

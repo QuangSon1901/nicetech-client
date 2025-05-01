@@ -49,7 +49,6 @@ const Index = () => {
           <Features />
           <Templates />
           <Testimonials />
-          <CTA />
         </main>
         <Footer />
       </div>

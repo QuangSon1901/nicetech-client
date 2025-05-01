@@ -51,10 +51,10 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row gap-4 mb-16">
           <div className='relative w-full'>
             <span className='hidden md:flex md:items-center absolute top-1/2 -translate-y-1/2 right-full w-max whitespace-nowrap mr-2'>
-              <span className="sliding-underline">Dựng demo theo ý bạn</span> <ArrowRight size={14} className="ml-2" />
+              <span className="sliding-underline">Dựng demo miễn phí theo ý bạn</span> <ArrowRight size={14} className="ml-2" />
             </span>
             <span className='inline-block md:hidden mb-2'>
-              <span className="sliding-underline">Dựng demo theo ý bạn</span>
+              <span className="sliding-underline">Dựng demo miễn phí theo ý bạn</span>
             </span>
             <button className="btn-primary w-full">Liên hệ ngay</button>
           </div>
