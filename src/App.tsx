@@ -24,6 +24,7 @@ import Clients from "./pages/Clients";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
+import Imeo from "./pages/minisources/Imeo";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/lien-he" element={<Contact />} />
+            <Route path="/mini-source/patemeo" element={<Imeo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
