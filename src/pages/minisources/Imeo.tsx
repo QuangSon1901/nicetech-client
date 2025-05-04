@@ -67,7 +67,7 @@ export default function Imeo() {
                 </p>
 
                 <a
-                  href="/mini-sources/patemeo.zip"
+                  href="https://quangson.nicetech.vn/projects/patemeo/patemeo.zip"
                   download
                   className="bg-black text-white flex items-center justify-center gap-2 px-6 py-4 rounded-md hover:bg-gray-800 transition-colors w-full font-medium mb-4"
                 >
